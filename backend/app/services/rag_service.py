@@ -1,24 +1,25 @@
+import os
+
+from dotenv import load_dotenv
 from openai import OpenAI
 
 from app.services.vector_service import search_similar_chunks
 
+load_dotenv()
 
-client = OpenAI()
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 
 def ask_question(question: str) -> str:
-
-    # 1. Retrieve relevant chunks
     results = search_similar_chunks(question)
 
+    documents = (results.get("documents") or [[]])[0] or []
 
-    # 2. Build context
-    documents = results["documents"][0]
+    if not documents:
+        return "I don't know based on the provided documents."
 
     context = "\n\n".join(documents)
 
-
-    # 3. Build prompt
     prompt = f"""
 You are an AI assistant answering questions from company documents.
 
@@ -38,13 +39,9 @@ Question:
 Answer:
 """
 
-
-    # 4. Send to LLM
     response = client.responses.create(
         model="gpt-4.1-mini",
-        input=prompt
+        input=prompt,
     )
 
-
-    # 5. Return answer
     return response.output_text

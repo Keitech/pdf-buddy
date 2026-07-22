@@ -1,10 +1,7 @@
-from app.services.vector_store import search_similar_chunks
+from app.services.vector_service import search_similar_chunks
 
 
-def retrieve_context(question: str):
-
+def retrieve_context(question: str) -> str:
     results = search_similar_chunks(question)
-
-    documents = results["documents"][0]
-
+    documents = (results.get("documents") or [[]])[0] or []
     return "\n\n".join(documents)
