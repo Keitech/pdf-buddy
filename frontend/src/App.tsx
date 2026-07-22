@@ -141,13 +141,14 @@ function App() {
           <label className="sr-only" htmlFor="question">
             Question
           </label>
-          <textarea
+          <input
             id="question"
-            rows={3}
+            type="text"
             value={question}
             onChange={(event) => setQuestion(event.target.value)}
             placeholder="What would you like to find in your documents?"
             disabled={asking}
+            autoComplete="off"
           />
           <button type="submit" disabled={asking || !question.trim()}>
             {asking ? 'Searching…' : 'Search documents'}

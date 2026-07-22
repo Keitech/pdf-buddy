@@ -15,25 +15,26 @@
 .brand-mark {
   margin: 0 0 0.35rem;
   font-family: var(--display);
-  font-size: clamp(2.4rem, 6vw, 3.6rem);
-  font-weight: 600;
-  line-height: 1;
-  letter-spacing: -0.04em;
+  font-size: clamp(2.35rem, 6vw, 3.4rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.045em;
   color: var(--ink);
 }
 
 .brand h1 {
   margin: 0;
   font-family: var(--sans);
-  font-size: 1.05rem;
-  font-weight: 500;
-  letter-spacing: 0.02em;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
   color: var(--muted);
 }
 
 .lede {
   margin: 0.85rem 0 0;
-  max-width: 34ch;
+  max-width: 36ch;
+  font-weight: 500;
   color: var(--muted);
 }
 
@@ -52,10 +53,10 @@
 
 h2 {
   margin: 0 0 0.9rem;
-  font-family: var(--sans);
-  font-size: 0.8rem;
+  font-family: var(--display);
+  font-size: 0.78rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--ink);
 }
@@ -63,10 +64,13 @@ h2 {
 .dropzone {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
-  padding: 1.35rem 1.25rem;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 1.4rem 1.5rem;
   border: 1.5px dashed color-mix(in srgb, var(--ink) 28%, transparent);
+  border-radius: var(--radius-pill);
   background: color-mix(in srgb, var(--surface) 72%, transparent);
+  text-align: center;
   cursor: pointer;
   transition:
     border-color 0.2s ease,
@@ -98,12 +102,13 @@ h2 {
 }
 
 .dropzone-title {
-  font-weight: 600;
+  font-weight: 700;
   color: var(--ink);
 }
 
 .dropzone-hint {
   font-size: 0.92rem;
+  font-weight: 500;
   color: var(--muted);
 }
 
@@ -120,24 +125,29 @@ h2 {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  align-items: center;
   gap: 0.35rem 1rem;
-  padding: 0.65rem 0;
-  border-bottom: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
+  padding: 0.75rem 1.15rem;
+  border: 1px solid color-mix(in srgb, var(--ink) 10%, transparent);
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--surface) 80%, transparent);
 }
 
 .doc-list .empty {
   color: var(--muted);
-  border-bottom: none;
-  padding-left: 0;
+  border-style: dashed;
+  background: transparent;
+  justify-content: center;
 }
 
 .doc-name {
   color: var(--ink);
-  font-weight: 500;
+  font-weight: 700;
 }
 
 .doc-meta {
   font-size: 0.9rem;
+  font-weight: 500;
   color: var(--muted);
 }
 
@@ -147,37 +157,40 @@ h2 {
   gap: 0.75rem;
 }
 
-textarea {
+.chat input[type='text'] {
   width: 100%;
   box-sizing: border-box;
-  resize: vertical;
-  min-height: 5.5rem;
-  padding: 0.9rem 1rem;
+  height: 2.85rem;
+  padding: 0 1.25rem;
   border: 1px solid color-mix(in srgb, var(--ink) 18%, transparent);
+  border-radius: var(--radius-pill);
   background: var(--surface);
   color: var(--ink);
   font: inherit;
-  line-height: 1.45;
+  font-weight: 600;
+  line-height: 1;
   transition: border-color 0.2s ease;
 }
 
-textarea:focus {
+.chat input[type='text']:focus {
   outline: none;
   border-color: var(--accent);
 }
 
-textarea::placeholder {
+.chat input[type='text']::placeholder {
+  font-weight: 500;
   color: color-mix(in srgb, var(--muted) 80%, transparent);
 }
 
 button[type='submit'] {
   align-self: flex-start;
-  padding: 0.7rem 1.15rem;
+  padding: 0.75rem 1.35rem;
   border: none;
+  border-radius: var(--radius-pill);
   background: var(--ink);
   color: var(--paper);
   font: inherit;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
   transition:
     background 0.2s ease,
@@ -196,15 +209,18 @@ button[type='submit']:disabled {
 
 .answer {
   margin-top: 1.25rem;
-  padding-top: 1.25rem;
-  border-top: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
+  padding: 1.15rem 1.35rem;
+  border: 1px solid color-mix(in srgb, var(--ink) 10%, transparent);
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--surface) 85%, transparent);
 }
 
 .answer h3 {
   margin: 0 0 0.55rem;
-  font-size: 0.8rem;
+  font-family: var(--display);
+  font-size: 0.78rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--ink);
 }
@@ -212,14 +228,19 @@ button[type='submit']:disabled {
 .answer p {
   margin: 0;
   white-space: pre-wrap;
+  font-weight: 500;
   color: var(--ink);
   line-height: 1.55;
 }
 
 .error {
   margin: 0.75rem 0 0;
+  padding: 0.55rem 1rem;
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--danger) 10%, transparent);
   color: var(--danger);
   font-size: 0.95rem;
+  font-weight: 600;
 }
 
 .sr-only {
@@ -253,5 +274,10 @@ button[type='submit']:disabled {
 
   .doc-list li {
     flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .doc-list .empty {
+    align-items: center;
   }
 }
